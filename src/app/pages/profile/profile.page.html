@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar no-border-top color="primary">
+    <ion-title>Meine Bücher</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngIf="!(auth.user$ | async)">
+    <ion-card-header>
+      <ion-card-subtitle>Information</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>Anmeldung</h1>
+      <p text-wrap>Melde dich mit nur einem Klick an um den ganzen Umfang von BookAround nutzen zu können.</p>
+      <p text-wrap>Unser Angebot bleibt für dich dauerhaft kostenfrei!</p>
+    </ion-card-content>
+    <ion-item>
+      <ion-button fill="outline" slot="end" [routerLink]="['/login']">Zur Anmeldung</ion-button>
+    </ion-item>
+  </ion-card>
+
+  <div *ngIf="user">
+    <ion-card>
+      <ion-card-content>
+        <h1>Profildaten</h1>
+        <p text-wrap>Hallo {{user.displayName}}. Hier kannst du deine Profildaten bearbeiten.</p>
+        <ion-item>
+          <ion-label position="floating">Benutzername</ion-label>
+          <ion-input type="text" [(ngModel)]="user.displayName"></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-item>
+        <ion-button fill="outline" slot="end">Zur Anmeldung</ion-button>
+      </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="!(user.lat)">
+      <ion-card-header>
+        <ion-card-subtitle>Information</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>Füge deinen Zuhause hinzu</h2>
+        <p text-wrap>Um Bücher hinzuzufügen benötigen wir deinen Standort. Nur so können deine Nachbarn deine
+          Bücherschätze entdecken. Keine Sorge, deine Daten gehören dir! Datenschutz und Transparenz sind uns sehr
+          wichtig! Wir speichern keine Bewegungsdaten unserer Benutzer. Die einmaligen Standortdaten werden nur
+          verwendet um anderen Benutzer deine Bücherangebot anzuzeigen.</p>
+        <p text-wrap>Anderen Benutzern wird die Kombination aus Standort und deinem anonymen Benutzernamen angezeigt.
+        </p>
+      </ion-card-content>
+      <ion-item>
+        <ion-button fill="outline" slot="end" (click)="presentAddUserLocation()">
+          <ion-icon name="pin" slot="start"></ion-icon>
+          Meinen Standort hinzufügen.
+        </ion-button>
+      </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="(user.lat)">
+      <ion-card-header>
+        <ion-card-subtitle>Gespeichertes Zuhause</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <agm-map [latitude]="user.lat" [longitude]="user.lng" [zoom]="14">
+          <agm-marker [latitude]="user.lat" [longitude]="user.lng"></agm-marker>
+        </agm-map>
+      </ion-card-content>
+      <ion-item>
+          <ion-button fill="outline" slot="end" (click)="presentAddUserLocation()">
+            <ion-icon name="pin" slot="start"></ion-icon>
+            Meinen Standort ändern.
+          </ion-button>
+        </ion-item>
+    </ion-card>
+
+  </div>
+
+</ion-content>

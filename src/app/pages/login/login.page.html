@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Anmeldung
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-xs="12" size-sm="9" size-md="6" size-lg="6" size-xl="6">
+          <div *ngIf="!(auth.user$ | async); then login else alreadyLoggedIn">
+            <!-- template will replace this div -->
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  
+  <!-- User NOT logged in -->
+  <ng-template #login>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Anmelden</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>        
+        <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="auth.googleSignin()">
+          <ion-icon name="logo-google" slot="start"></ion-icon>
+          Mit Google anmelden
+        </ion-button>
+      </ion-card-content>
+    </ion-card>   
+  </ng-template>
+  
+  <!-- User logged in -->
+  <ng-template #alreadyLoggedIn>
+    <ion-card *ngIf="auth.user$ | async as user">
+      <ion-card-header>
+        <ion-card-title>Hallo {{user.displayName}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Du bist bereits angemeldet. </p>
+        <ion-button expand="block" shape="round" fill="outline" color="danger" (click)="auth.signOut()">
+            <ion-icon name="log-out" slot="start"></ion-icon>
+          Abmelden
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>

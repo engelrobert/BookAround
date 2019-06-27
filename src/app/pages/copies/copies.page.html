@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar no-border-top color="primary">
+    <ion-title>Meine Bücher</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngIf="!(auth.user$ | async)">
+    <ion-card-header>
+      <ion-card-subtitle>Information</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>Anmeldung</h1>
+      <p text-wrap>Melde dich mit nur einem Klick an um den ganzen Umfang von BookAround nutzen zu können.</p>
+      <p text-wrap>Unser Angebot bleibt für dich dauerhaft kostenfrei!</p>
+    </ion-card-content>
+    <ion-item>
+      <ion-button fill="outline" slot="end" [routerLink]="['/login']">Zur Anmeldung</ion-button>
+    </ion-item>
+  </ion-card>
+
+  <div *ngIf="(auth.user$ | async)">
+    <ion-card *ngIf="!(locationIsKnown)">
+      <ion-card-header>
+        <ion-card-subtitle>Information</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>Füge deinen Zuhause hinzu</h2>
+        <p text-wrap>Um Bücher hinzuzufügen benötigen wir deinen Standort. Nur so können deine Nachbarn deine
+          Bücherschätze entdecken. Keine Sorge, deine Daten gehören dir! Datenschutz und Transparenz sind uns sehr
+          wichtig! Wir speichern keine Bewegungsdaten unserer Benutzer. Die einmaligen Standortdaten werden nur
+          verwendet um anderen Benutzer deine Bücherangebot anzuzeigen.</p>
+        <p text-wrap>Anderen Benutzern wird die Kombination aus Standort und deinem anonymen Benutzernamen angezeigt.
+        </p>
+      </ion-card-content>
+      <ion-item>
+        <ion-button fill="outline" slot="end" (click)="presentAddUserLocation()">
+          <ion-icon name="pin" slot="start"></ion-icon>
+          Meinen Standort hinzufügen.
+        </ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <ion-card *ngIf="data.bookArray">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Du hast {{data.bookArray.length}} Bücher hinzugefügt</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let book of data.bookArray;" detail [routerLink]="['/app/tabs/book', userId, book.id]">
+        <ion-thumbnail *ngIf="book?.imageurl" slot="start">
+          <img src="{{book.imageurl}}">
+        </ion-thumbnail>
+        <ion-thumbnail *ngIf="!book.imageurl" slot="start">
+          <img src="assets/img/nocover.png">
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{book.title}}</h3>
+          <span>
+            <ion-badge class="ion-margin-end" color="primary">{{book.offer}}</ion-badge>
+            <ion-badge color="primary">{{book.state}}</ion-badge>
+          </span>
+        </ion-label>
+
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <div *ngIf="(auth.user$ | async)">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="(locationIsKnown)">
+      <ion-fab-button color="primary">
+        <ion-icon name="add">
+        </ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-list side="top">
+        <ion-fab-button (click)="loadData()">
+          <ion-icon name="list"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="presentAddByIsbnModal()">
+          <ion-icon name="search"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="presentAddByScannerModal()">
+          <ion-icon name="barcode"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  </div>
+
+</ion-content>

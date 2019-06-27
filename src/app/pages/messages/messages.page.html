@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar no-border-top color="primary">
+    <ion-title>Meine Bücher</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngIf="!(auth.user$ | async)">
+    <ion-card-header>
+      <ion-card-subtitle>Information</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>Anmeldung</h1>
+      <p text-wrap>Melde dich mit nur einem Klick an um den ganzen Umfang von BookAround nutzen zu können.</p>
+      <p text-wrap>Unser Angebot bleibt für dich dauerhaft kostenfrei!</p>
+    </ion-card-content>
+    <ion-item>
+      <ion-button fill="outline" slot="end" [routerLink]="['/login']">Zur Anmeldung</ion-button>
+    </ion-item>
+  </ion-card>
+
+</ion-content>

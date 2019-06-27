@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Standort hinzufügen</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-button *ngIf="!lat" expand="block" shape="round" fill="outline" color="primary" (click)="getCurrentLocation()">
+    <ion-icon name="pin" slot="start"></ion-icon>
+    Standort freigeben
+  </ion-button>
+  <ion-button *ngIf="!lat" expand="block" shape="round" fill="outline" color="primary" (click)="presentAdressPrompt()">
+      <ion-icon name="map" slot="start"></ion-icon>
+      Adresse suchen
+    </ion-button>
+
+  <ion-button *ngIf="lat" expand="block" shape="round" fill="outline" color="primary" (click)="resetLocation()">
+      <ion-icon name="create" slot="start"></ion-icon>
+      Anderen Standort auswählen
+    </ion-button>
+
+  <ion-button *ngIf="lat" expand="block" shape="round" fill="outline" color="primary" (click)="updateUserLocation()">
+    <ion-icon name="save" slot="start"></ion-icon>
+    Diesen Standort speichern
+  </ion-button>
+
+
+  <agm-map *ngIf="lat" [latitude]="lat" [longitude]="lng" [zoom]="14">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+
+  <ion-button expand="block" shape="round" fill="outline" color="danger" (click)="dismiss()">
+    <ion-icon name="close" slot="start"></ion-icon>
+    Abbrechen
+  </ion-button>
+
+</ion-content>

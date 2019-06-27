@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar no-border-top color="primary">
+    <ion-title>BookAround</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-content>
+      <h1>Willkommen bei BookAround</h1>
+      <p text-wrap>BookAround ist dein digitaler öffentlicher Bücherschrank.</p>
+      <p text-wrap>Finde Bücher in deiner Nachbarschaft und teile deine Bücher mit begeisterten Lesern.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="(auth.user$ | async)">
+    <ion-card *ngIf="!(locationIsKnown)">
+      <ion-card-header>
+        <ion-card-subtitle>Information</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>Füge deinen Heimathafen hinzu</h2>
+        <p text-wrap>Keine Sorge, deine Daten gehören dir! Datenschutz und Transparenz sind uns sehr wichtig! Wir
+          speichern keine Bewegungsdaten unserer Benutzer. Die einmaligen Standortdaten werden nur
+          verwendet um anderen Benutzer deine Bücherangebot anzuzeigen.</p>
+        <p text-wrap>Anderen Benutzern wird die Kombination aus Standort und deinem anonymen Benutzernamen angezeigt.
+        </p>
+      </ion-card-content>
+      <ion-item>
+        <ion-button fill="outline" slot="end" (click)="presentAddUserLocation()">
+          <ion-icon name="pin" slot="start"></ion-icon>
+          Meinen Standort hinzufügen.
+        </ion-button>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <h1>Bücher aus deiner Nachbarschaft</h1>
+      <p text-wrap *ngIf="!(locationIsKnown)">Um Bücher in deiner Umgebung zu finden kannst du mit deiner Adresse oder
+        deinem Standort suchen.
+      </p>
+      <p text-wrap *ngIf="(locationIsKnown)">Hallo {{name}}. Wir haben nach Bücher in deiner Nähe deines Zuhauses
+        gesucht. Wenn du willst kannst du aber auch an deinem aktuellen Standort oder an einer anderen Adresse suchen.
+      </p>
+      <ion-item>
+        <ion-label>Suchradius</ion-label>
+        <ion-select placeholder="Auswählen" [(ngModel)]="radius" (ngModelChange)="onRadiusChange($event)">
+          <ion-select-option value="1">1 km</ion-select-option>
+          <ion-select-option value="5">5 km</ion-select-option>
+          <ion-select-option value="10">10 km</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="presentAdressPrompt()">
+        <ion-icon name="map" slot="start"></ion-icon>
+        Adresse suchen
+      </ion-button>
+      <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="getCurrentLocation()">
+        <ion-icon name="pin" slot="start"></ion-icon>
+        Mit Standort suchen
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+      <agm-marker *ngFor="let location of locationsArray" [latitude]="location.position.geopoint._lat"
+        [longitude]="location.position.geopoint._long">
+        <agm-info-window>
+          <h1>Hier gibt es {{location.data.bookArray.length}} Bücher</h1>
+        </agm-info-window>
+      </agm-marker>
+      <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radius * 1000"></agm-circle>
+    </agm-map>
+  </ion-card>
+
+  <ion-card *ngIf="locationsArray">
+    <ion-list *ngFor="let location of locationsArray">
+      <ion-list-header>
+        <ion-label>{{location.data.bookArray.length}} Bücher von {{location.data.userName}}</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let book of location.data.bookArray;" detail [routerLink]="['/app/tabs/book', location.id, book.id]">
+        <ion-thumbnail *ngIf="book?.imageurl" slot="start">
+          <img src="{{book.imageurl}}">
+        </ion-thumbnail>
+        <ion-thumbnail *ngIf="!book.imageurl" slot="start">
+            <img src="assets/img/nocover.png">
+          </ion-thumbnail>
+        <ion-label>
+          <h3>{{book.title}}</h3>
+          <span>
+            <ion-badge class="ion-margin-end" color="primary">{{book.offer}}</ion-badge>
+            <ion-badge color="primary">{{book.state}}</ion-badge>
+          </span>
+        </ion-label>
+
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,82 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+agm-map {
+    height: 300px;
+}
+
+img.cover-image {
+    width: 100%;
+    height: auto;
+    align-self: center;
+    margin: 0 auto;
+    max-width: 128px;
+    border-radius: 5px;
+}
+
+.book-info {
+    width: 128px;
+    height: 220px;
+    position: absolute;
+    top: -25px;
+    left: -64px;
+}
+
+.nocover {
+    background-color: var(--ion-color-secondary);
+    border-radius: 5px;
+    height: 205px;
+    color: #000;
+    font-family: 'Proza Libre', sans-serif;
+}
+
+.book-card {
+    margin-bottom: 40px !important;
+    position: relative;
+    min-height: 150px;
+    flex-direction: column;
+    overflow: visible;
+    margin-left: 50px;
+    padding-left: 50px;
+
+    h2 {
+        font-family: 'Proza Libre', sans-serif;
+        font-weight: 600;
+    }
+
+    h3 {}
+}
+
+.margin-top {
+    margin-top: 30px;
+}
+
+.information {
+    background-color: var(--ion-color-warning);
+    --background: none;
+}
+
+.error {
+    background-color: var(--ion-color-danger);
+    --background: none;
+}
+
+.drawingBuffer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#scanner video {
+    width: 100%;
+}
