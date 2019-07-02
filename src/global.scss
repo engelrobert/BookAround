@@ -86,4 +86,12 @@ img.cover-image {
     left: 0;
     bottom: 10px;
     right: 0;
+    border-top: 1px solid #ddd
+}
+
+.messages{
+    position: fixed;
+    left: 0;
+    bottom: 150px;
+    right: 0;
 }

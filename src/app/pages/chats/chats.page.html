@@ -32,7 +32,7 @@
           </ion-thumbnail>
           <ion-label>
               <h3>{{chat.topic}}</h3>
-              <p>{{chat.updatedAt}}</p>              
+              <p>Letzte Nachricht: {{chat.updatedAt | date:'short' }}</p>              
             </ion-label>
       </ion-item>
     </ion-list>
