@@ -33,8 +33,16 @@ const routes: Routes = [
         loadChildren: '../profile/profile.module#ProfilePageModule'
       },
       {
-        path: 'messages',
-        loadChildren: '../messages/messages.module#MessagesPageModule'
+        path: 'chats',
+        loadChildren: '../chats/chats.module#ChatsPageModule'
+      },
+      {
+        path: 'chat',
+        loadChildren: '../chat/chat.module#ChatPageModule'
+      },
+      {
+        path: 'chat/:chatId',
+        loadChildren: '../chat/chat.module#ChatPageModule'
       },
       {
         path: 'book',

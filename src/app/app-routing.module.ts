@@ -23,7 +23,9 @@ const routes: Routes = [
   { path: 'add-user-location', loadChildren: './pages/add-user-location/add-user-location.module#AddUserLocationPageModule' },
   { path: 'book', loadChildren: './pages/book/book.module#BookPageModule' },
   { path: 'location', loadChildren: './pages/location/location.module#LocationPageModule' },
-  { path: 'about', loadChildren: './pages/about/about.module#AboutPageModule' }
+  { path: 'about', loadChildren: './pages/about/about.module#AboutPageModule' },
+  { path: 'chats', loadChildren: './pages/chats/chats.module#ChatsPageModule' },
+  { path: 'chat', loadChildren: './pages/chat/chat.module#ChatPageModule' }
 ];
 
 @NgModule({

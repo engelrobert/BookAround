@@ -14,7 +14,10 @@ export class BookService {
   book: Book;
   private bookCollection: AngularFirestoreCollection<Book>;
 
-  constructor(public http: HttpClient, private afs: AngularFirestore) { }
+  constructor(
+    public http: HttpClient,
+    private afs: AngularFirestore
+  ) { }
 
 
   isValidISBN(isbn: string): Boolean {

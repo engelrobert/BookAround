@@ -10,6 +10,7 @@ import { Location } from '../../models/location.model';
 import { LocationsService } from '../../services/locations/locations.service';
 import { HelperService } from '../../services/helper/helper.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { ChatService } from '../../services/chat/chat.service'
 
 @Component({
   selector: 'app-book',
@@ -31,7 +32,8 @@ export class BookPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private locationsService: LocationsService,
     private helperService: HelperService,
-    private auth: AuthService
+    private auth: AuthService,
+    private chatService: ChatService
   ) { }
 
   ngOnInit() {
@@ -51,8 +53,8 @@ export class BookPage implements OnInit {
     })
   }
 
-  updateBook() {    
-    const helper = this.helperService;    
+  updateBook() {
+    const helper = this.helperService;
     const index: number = this.location.data.bookArray.findIndex(x => x.id === this.bookId)
     this.location.data.bookArray[index] = this.book;
     this.locationsService.updateLocation(this.location.data)
@@ -65,8 +67,8 @@ export class BookPage implements OnInit {
       })
   }
 
-  deleteBook() {    
-    const helper = this.helperService;    
+  deleteBook() {
+    const helper = this.helperService;
     const index: number = this.location.data.bookArray.findIndex(x => x.id === this.bookId)
     this.location.data.bookArray.splice(index, 1);
     this.locationsService.updateLocation(this.location.data)
@@ -77,6 +79,10 @@ export class BookPage implements OnInit {
         helper.showToast('Beim Verarbeiten des Löschens ist ein Fehler aufgetreten.');
         console.log(err)
       })
+  }
+
+  openChat() {
+    this.chatService.createChat(this.locationId, `Anfrage zu ${this.book.title}`, this.bookId)
   }
 
 }

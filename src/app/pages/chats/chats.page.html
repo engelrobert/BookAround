@@ -2,15 +2,15 @@
   <ion-toolbar no-border-top color="primary">
     <ion-title>Nachrichten</ion-title>
     <ion-buttons slot="secondary">
-      <ion-button [routerLink]="['/app/tabs/profile']">
-        <ion-icon slot="icon-only" name="person"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+        <ion-button [routerLink]="['/app/tabs/profile']">
+          <ion-icon slot="icon-only" name="person"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngIf="!(auth.user$ | async)">
+  <ion-card *ngIf="false">
     <ion-card-header>
       <ion-card-subtitle>Information</ion-card-subtitle>
     </ion-card-header>
@@ -22,6 +22,21 @@
     <ion-item>
       <ion-button fill="outline" slot="end" [routerLink]="['/login']">Zur Anmeldung</ion-button>
     </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="chatsArray.length">
+    <ion-list>
+      <ion-item *ngFor="let chat of chatsArray;" detail [routerLink]="['/app/tabs/chat', chat.id]">
+        <ion-thumbnail slot="start">
+            <img src="assets/img/nocover.png">
+          </ion-thumbnail>
+          <ion-label>
+              <h3>{{chat.topic}}</h3>
+              <p>{{chat.updatedAt}}</p>              
+            </ion-label>
+      </ion-item>
+    </ion-list>
+
   </ion-card>
 
 </ion-content>

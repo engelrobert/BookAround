@@ -80,3 +80,10 @@ img.cover-image {
 #scanner video {
     width: 100%;
 }
+
+.stick-bottom {
+    position: fixed;
+    left: 0;
+    bottom: 10px;
+    right: 0;
+}
