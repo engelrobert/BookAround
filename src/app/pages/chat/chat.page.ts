@@ -25,9 +25,9 @@ export class ChatPage implements OnInit {
   ngOnInit() {
     this.chatId = this.activatedRoute.snapshot.paramMap.get('chatId');
     const source = this.cs.getChat(this.chatId);
-    this.chat$ = this.cs.joinUsers(source);
+    this.chat$ = this.cs.joinUsers(source);    
   }
-
+  
   submit() {
     this.cs.sendMessage(this.chatId, this.newMsg);
     this.newMsg = '';

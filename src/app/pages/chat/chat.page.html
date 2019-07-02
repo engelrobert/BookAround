@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="chat$ | async as chat" class="messages">
+  <div *ngIf="chat$ | async as chat" class="messages" #scrollMe [scrollTop]="scrollMe.scrollHeight">
     <div *ngFor="let msg of chat.messages; trackBy: trackByCreated">
       <ion-item>
         <ion-avatar slot="start">
