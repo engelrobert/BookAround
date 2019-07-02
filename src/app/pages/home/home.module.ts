@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
 // Import AGM
 import { AgmCoreModule } from '@agm/core';
+// Import Enviroment 
+import { environment } from '../../../environments/environment';
 
 const routes: Routes = [
   {
@@ -23,7 +25,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCgC1hqe1DjyopCYJb56hLoVoU5ABaKhWg'
+      apiKey: environment.mapsApiKey
     })
   ],
   declarations: [HomePage]

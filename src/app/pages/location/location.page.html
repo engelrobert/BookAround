@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar no-border-top color="primary">
+    <ion-title *ngIf="location">Bücher von {{location.data.userName}}</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/app/tabs/profile']">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngIf="location">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>{{location.data.userName}} hat {{location.data.bookArray.length}} Bücher hinzugefügt</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let book of location.data.bookArray;" detail [routerLink]="['/app/tabs/book', locationId, book.id]">
+        <ion-thumbnail *ngIf="book?.imageurl" slot="start">
+          <img src="{{book.imageurl}}">
+        </ion-thumbnail>
+        <ion-thumbnail *ngIf="!book.imageurl" slot="start">
+          <img src="assets/img/nocover.png">
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{book.title}}</h3>
+          <span>
+            <ion-badge class="ion-margin-end" color="primary">{{book.offer}}</ion-badge>
+            <ion-badge color="primary">{{book.state}}</ion-badge>
+          </span>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+</ion-content>

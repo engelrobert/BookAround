@@ -8,6 +8,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { ProfilePage } from './profile.page';
 
+// Import Enviroment 
+import { environment } from '../../../environments/environment';
+
 const routes: Routes = [
   {
     path: '',
@@ -21,7 +24,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCgC1hqe1DjyopCYJb56hLoVoU5ABaKhWg'
+      apiKey: environment.mapsApiKey
     }),
     RouterModule.forChild(routes)
   ],

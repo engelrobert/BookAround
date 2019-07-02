@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+
+// Models
 import { Copy } from '../../models/copy.model';
 import { Location } from '../../models/location.model';
 

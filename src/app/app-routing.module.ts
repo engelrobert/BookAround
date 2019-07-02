@@ -21,7 +21,9 @@ const routes: Routes = [
     loadChildren: './pages/login/login.module#LoginPageModule',
   },
   { path: 'add-user-location', loadChildren: './pages/add-user-location/add-user-location.module#AddUserLocationPageModule' },
-  { path: 'book', loadChildren: './pages/book/book.module#BookPageModule' }
+  { path: 'book', loadChildren: './pages/book/book.module#BookPageModule' },
+  { path: 'location', loadChildren: './pages/location/location.module#LocationPageModule' },
+  { path: 'about', loadChildren: './pages/about/about.module#AboutPageModule' }
 ];
 
 @NgModule({

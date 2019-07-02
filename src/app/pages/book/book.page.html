@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar no-border-top color="primary">
     <ion-title>Meine Bücher</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/app/tabs/profile']">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -107,9 +112,9 @@
           Änderungen speichern
         </ion-button>
         <ion-button *ngIf="canEdit" expand="block" shape="round" fill="outline" color="danger" (click)="deleteBook()">
-            <ion-icon name="trash" slot="start"></ion-icon>
-            Buch löschen
-          </ion-button>
+          <ion-icon name="trash" slot="start"></ion-icon>
+          Buch löschen
+        </ion-button>
       </ion-card-content>
     </ion-card>
   </div>

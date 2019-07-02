@@ -62,8 +62,7 @@ export class AddBookSearchPage implements OnInit {
     this.state = 'Gut';
     this.offer = 'Zu tauschen';
     this.comment = '';
-    this.isbn = this.isbnForm.get('isbn').value;
-    console.log(this.booksService.isValidISBN(this.isbn))
+    this.isbn = this.isbnForm.get('isbn').value;    
     if (this.booksService.isValidISBN(this.isbn)) {
       if (this.isbn.length === 10) {
         this.isbn = this.booksService.isbn10to13(this.isbn);
@@ -89,8 +88,7 @@ export class AddBookSearchPage implements OnInit {
         this.data = response;
         if (this.data.totalItems > 0) {
           this.booksService.getBookWithGoogle(this.data.items[0].selfLink).subscribe(
-            (response: any) => {
-              console.log(response)
+            (response: any) => {              
               this.book = {
                 title: (response.volumeInfo['title']) ? response.volumeInfo['title'] : '',
                 subtitle: (response.volumeInfo['subtitle']) ? response.volumeInfo['subtitle'] : '',
@@ -102,8 +100,7 @@ export class AddBookSearchPage implements OnInit {
                 publisher: (response.volumeInfo['publisher']) ? response.volumeInfo['publisher'] : '',
                 publishDate: (response.volumeInfo['publishedDate']) ? response.volumeInfo['publishedDate'] : '',
                 pages: (response.volumeInfo['pageCount']) ? response.volumeInfo['pageCount'] : '',
-              }
-              console.log(response)
+              }              
               this.booksService.addBook(this.book);
             },
             error => {

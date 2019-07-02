@@ -5,16 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AgmCoreModule } from '@agm/core';
-import { AddUserLocationPage } from './add-user-location.page';
-
-// Import Enviroment 
-import { environment } from '../../../environments/environment';
+import { AboutPage } from './about.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: AddUserLocationPage
+    component: AboutPage
   }
 ];
 
@@ -23,11 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.mapsApiKey
-    }),
     RouterModule.forChild(routes)
   ],
-  declarations: [AddUserLocationPage]
+  declarations: [AboutPage]
 })
-export class AddUserLocationPageModule {}
+export class AboutPageModule {}

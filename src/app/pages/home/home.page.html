@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar no-border-top color="primary">
     <ion-title>BookAround</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/app/tabs/profile']">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -79,15 +84,17 @@
   <ion-card *ngIf="locationsArray">
     <ion-list *ngFor="let location of locationsArray">
       <ion-list-header>
-        <ion-label>{{location.data.bookArray.length}} Bücher von {{location.data.userName}}</ion-label>
+        <ion-label>{{location.data.bookArray.length}} Bücher von <a
+            [routerLink]="['/app/tabs/location', location.id]">{{location.data.userName}}</a></ion-label>
       </ion-list-header>
-      <ion-item *ngFor="let book of location.data.bookArray;" detail [routerLink]="['/app/tabs/book', location.id, book.id]">
+      <ion-item *ngFor="let book of location.data.bookArray;" detail
+        [routerLink]="['/app/tabs/book', location.id, book.id]">
         <ion-thumbnail *ngIf="book?.imageurl" slot="start">
           <img src="{{book.imageurl}}">
         </ion-thumbnail>
         <ion-thumbnail *ngIf="!book.imageurl" slot="start">
-            <img src="assets/img/nocover.png">
-          </ion-thumbnail>
+          <img src="assets/img/nocover.png">
+        </ion-thumbnail>
         <ion-label>
           <h3>{{book.title}}</h3>
           <span>

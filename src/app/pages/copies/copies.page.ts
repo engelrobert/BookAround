@@ -44,14 +44,11 @@ export class CopiesPage implements OnInit {
           this.locationIsKnown = true;
         }
       }
-      this.locationService.getLocationChanges().subscribe(result => {
-        console.log(result);
+      this.locationService.getLocationChanges().subscribe(result => {        
         if (result) {
-          this.data = result.data;
-          console.log(this.data.bookArray);
+          this.data = result.data;          
         } else {
-          this.data = { userName: '', bookArray: [] };
-          console.log(this.data.bookArray);
+          this.data = { userName: '', bookArray: [] };          
         }
       });
     })

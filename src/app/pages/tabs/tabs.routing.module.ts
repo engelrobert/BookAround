@@ -43,7 +43,19 @@ const routes: Routes = [
       {
         path: 'book/:locationId/:bookId',
         loadChildren: '../book/book.module#BookPageModule'
-      }
+      },
+      {
+        path: 'location',
+        loadChildren: '../location/location.module#LocationPageModule'
+      },
+      {
+        path: 'location/:locationId',
+        loadChildren: '../location/location.module#LocationPageModule'
+      },
+      {
+        path: 'about',
+        loadChildren: '../about/about.module#AboutPageModule'
+      },
     ]
   }
 ];
