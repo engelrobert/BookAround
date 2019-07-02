@@ -14,6 +14,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class ChatPage implements OnInit {
   chat$: Observable<any>;
   newMsg: string;
+  chatId: string;
 
   constructor(
     public cs: ChatService,
@@ -22,13 +23,13 @@ export class ChatPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    const chatId = this.activatedRoute.snapshot.paramMap.get('chatId');
-    const source = this.cs.getChat(chatId);
+    this.chatId = this.activatedRoute.snapshot.paramMap.get('chatId');
+    const source = this.cs.getChat(this.chatId);
     this.chat$ = this.cs.joinUsers(source);
   }
 
-  submit(chatId) {
-    this.cs.sendMessage(chatId, this.newMsg);
+  submit() {
+    this.cs.sendMessage(this.chatId, this.newMsg);
     this.newMsg = '';
   }
 

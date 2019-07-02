@@ -21,10 +21,10 @@
 
   <div class="stick-bottom">
     <ion-item>
-      <ion-textarea placeholder="Gebe deine Nachricht ein" [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)">
+      <ion-textarea placeholder="Gebe deine Nachricht ein" [(ngModel)]="newMsg" (keydown.enter)="submit()">
       </ion-textarea>
     </ion-item>
-    <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="submit(chat.id)">Senden
+    <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="submit()">Senden
     </ion-button>
   </div>
 
