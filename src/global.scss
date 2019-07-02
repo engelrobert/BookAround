@@ -82,16 +82,21 @@ img.cover-image {
 }
 
 .stick-bottom {
+    display: flex;
     position: fixed;
     left: 0;
     bottom: 10px;
     right: 0;
-    border-top: 1px solid #ddd
+    border-top: 1px solid #ddd;
+    flex-direction: column;
 }
 
-.messages{
+.messages {
+    display: flex;
     position: fixed;
     left: 0;
     bottom: 150px;
     right: 0;
+    flex-direction: column;
+    overflow-x: auto;
 }
