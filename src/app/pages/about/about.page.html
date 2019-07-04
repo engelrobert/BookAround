@@ -1,14 +1,38 @@
 <ion-header>
-    <ion-toolbar no-border-top color="primary">
-      <ion-title>Über BookAround</ion-title>
-      <ion-buttons slot="secondary">
-        <ion-button [routerLink]="['/app/tabs/profile']">
-          <ion-icon slot="icon-only" name="person"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content padding>
+  <ion-toolbar no-border-top>
+    <ion-title>Über BookAround</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['/app/tabs/profile']">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Über BookAround
+    </ion-card-header>
+    <ion-card-content>
+      <h1>Dein digitaler öffentlicher Bücherschrank</h1>
+      <p text-wrap>BookAround ist eine Plafform zum Verschenken und Tauschen von Büchern. Finde Bücherliebhaber in deiner Nachbarschaft.</p>
+      <p text-wrap>Wir sind auf allen Plattformen für verfügbar.</p>
+    </ion-card-content>
+  </ion-card>
+
+   <ion-card>
+    <ion-card-header>
+      Haftungshinweis
+    </ion-card-header>
+    <ion-card-content>
+      <p text-wrap>
+        Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung in jeglicher hinsicht.
+      </p>
+    </ion-card-content>
+    <ion-item>
+      <ion-button  color="primary" slot="end" routerLink="/privacypolicy">Datenschutzbestimmung
+      </ion-button>
+    </ion-item>
+  </ion-card>
 </ion-content>

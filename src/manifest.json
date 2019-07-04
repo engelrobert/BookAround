@@ -1,7 +1,7 @@
 {
   "name": "BookAround",
   "short_name": "BookAround",
-  "theme_color": "#5d4037",
+  "theme_color": "#00838e",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",

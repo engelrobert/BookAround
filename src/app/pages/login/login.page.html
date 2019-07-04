@@ -28,7 +28,7 @@
         <ion-card-title>Anmelden</ion-card-title>
       </ion-card-header>
       <ion-card-content>        
-        <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="auth.googleSignin()">
+        <ion-button expand="block" shape="round"  color="primary" (click)="auth.googleSignin()">
           <ion-icon name="logo-google" slot="start"></ion-icon>
           Mit Google anmelden
         </ion-button>
@@ -44,7 +44,7 @@
       </ion-card-header>
       <ion-card-content>
         <p>Du bist bereits angemeldet. </p>
-        <ion-button expand="block" shape="round" fill="outline" color="danger" (click)="auth.signOut()">
+        <ion-button expand="block" shape="round"  color="danger" (click)="auth.signOut()">
             <ion-icon name="log-out" slot="start"></ion-icon>
           Abmelden
         </ion-button>

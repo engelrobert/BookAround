@@ -54,8 +54,7 @@ export class HomePage implements OnInit {
   }
 
   searchBooksforLocation() {
-    this.locationsService.queryLocation(this.lat, this.lng, this.radius).subscribe(result => {
-      console.log(result);
+    this.locationsService.queryLocation(this.lat, this.lng, this.radius).subscribe(result => {     
       this.locationsArray = result;
     })
   }

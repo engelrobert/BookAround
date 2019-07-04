@@ -16,7 +16,7 @@
         <ion-label position="floating">ISBN</ion-label>
         <ion-input type="text" formControlName="isbn"></ion-input>
       </ion-item>
-      <ion-button expand="block" shape="round" fill="outline" color="primary" [disabled]="!isbnForm.valid"
+      <ion-button expand="block" shape="round"  color="primary" [disabled]="!isbnForm.valid"
         (click)="searchBook()">
         <ion-icon name="search" slot="start"></ion-icon>
         Mit ISBN suchen
@@ -118,7 +118,7 @@
               </ion-select>
             </ion-item>
 
-          <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="addBook()">
+          <ion-button expand="block" shape="round"  color="primary" (click)="addBook()">
             <ion-icon name="add" slot="start"></ion-icon>
             Buch hinzufügen
           </ion-button>
@@ -127,7 +127,7 @@
 
     </div>
   </div>
-  <ion-button expand="block" shape="round" fill="outline" color="danger" (click)="dismiss()">
+  <ion-button expand="block" shape="round"  color="danger" (click)="dismiss()">
     <ion-icon name="close" slot="start"></ion-icon>
     Abbrechen
   </ion-button>

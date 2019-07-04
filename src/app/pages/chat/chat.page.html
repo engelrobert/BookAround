@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar no-border-top color="primary">
+  <ion-toolbar no-border-top>
     <ion-title *ngIf="chat$ | async as chat">{{chat?.topic}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -24,7 +24,9 @@
       <ion-textarea placeholder="Gebe deine Nachricht ein" [(ngModel)]="newMsg" (keydown.enter)="submit()">
       </ion-textarea>
     </ion-item>
-    <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="submit()">Senden
+    <ion-button expand="block" shape="round"  color="primary" (click)="submit()">
+        <ion-icon name="send" slot="start"></ion-icon>
+      Senden
     </ion-button>
   </div>
 

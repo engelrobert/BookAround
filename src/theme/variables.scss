@@ -2,14 +2,16 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 :root {
   /** primary **/
-  --ion-color-primary: #5d4037;
-  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary: #00838e;
+  --ion-color-primary-rgb: 0, 131, 142;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #321911;
-  --ion-color-primary-tint: #8b6b61;
+  --ion-color-primary-shade: #005662;
+  --ion-color-primary-tint: #0097a7;
 
   /** secondary **/
   --ion-color-secondary: #0cd1e8;
@@ -28,12 +30,12 @@
   --ion-color-tertiary-tint: #7e57ff;
 
   /** success **/
-  --ion-color-success: #10dc60;
+  --ion-color-success: #2e7d32;
   --ion-color-success-rgb: 16, 220, 96;
   --ion-color-success-contrast: #ffffff;
   --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #0ec254;
-  --ion-color-success-tint: #28e070;
+  --ion-color-success-shade: #005005;
+  --ion-color-success-tint: #60ad5e;
 
   /** warning **/
   --ion-color-warning: #ffce00;
@@ -74,4 +76,6 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-font-family: 'Open Sans', sans-serif;
 }

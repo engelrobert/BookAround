@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar no-border-top color="primary">
+  <ion-toolbar no-border-top>
     <ion-title>BookAround</ion-title>
     <ion-buttons slot="secondary">
       <ion-button [routerLink]="['/app/tabs/profile']">
@@ -33,7 +33,7 @@
         </p>
       </ion-card-content>
       <ion-item>
-        <ion-button fill="outline" slot="end" (click)="presentAddUserLocation()">
+        <ion-button  slot="end" (click)="presentAddUserLocation()">
           <ion-icon name="pin" slot="start"></ion-icon>
           Meinen Standort hinzufügen.
         </ion-button>
@@ -58,11 +58,11 @@
           <ion-select-option value="10">10 km</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="presentAdressPrompt()">
+      <ion-button expand="block" shape="round"  color="primary" (click)="presentAdressPrompt()">
         <ion-icon name="map" slot="start"></ion-icon>
         Adresse suchen
       </ion-button>
-      <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="getCurrentLocation()">
+      <ion-button expand="block" shape="round"  color="primary" (click)="getCurrentLocation()">
         <ion-icon name="pin" slot="start"></ion-icon>
         Mit Standort suchen
       </ion-button>
@@ -74,10 +74,14 @@
       <agm-marker *ngFor="let location of locationsArray" [latitude]="location.position.geopoint._lat"
         [longitude]="location.position.geopoint._long">
         <agm-info-window>
-          <h1>Hier gibt es {{location.data.bookArray.length}} Bücher</h1>
+          <p *ngIf="location.data.bookArray.length > 1"><b>Hier gibt es {{location.data.bookArray.length}} Bücher</b>
+          </p>
+          <p *ngIf="location.data.bookArray.length < 2"><b>Hier gibt es ein Buch</b></p>
+          <a [routerLink]="['/app/tabs/location', location.id]">Zum Profil von {{location.data.userName}}</a>
         </agm-info-window>
       </agm-marker>
-      <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radius * 1000"></agm-circle>
+      <agm-circle [latitude]="lat" [longitude]="lng" [radius]="radius * 1000">
+      </agm-circle>
     </agm-map>
   </ion-card>
 

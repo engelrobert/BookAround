@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar no-border-top color="primary">
-    <ion-title>Meine Bücher</ion-title>
+  <ion-toolbar no-border-top>
+    <ion-title>Mein Profil</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,10 @@
       <p text-wrap>Unser Angebot bleibt für dich dauerhaft kostenfrei!</p>
     </ion-card-content>
     <ion-item>
-      <ion-button fill="outline" slot="end" [routerLink]="['/login']">Zur Anmeldung</ion-button>
+      <ion-button slot="end" [routerLink]="['/login']">
+        <ion-icon name="log-in" slot="start"></ion-icon>
+        Zur Anmeldung
+      </ion-button>
     </ion-item>
   </ion-card>
 
@@ -30,7 +33,10 @@
         </ion-item>
       </ion-card-content>
       <ion-item>
-        <ion-button fill="outline" slot="end">Speichern</ion-button>
+        <ion-button slot="end">
+          <ion-icon slot="start" name="save"></ion-icon>
+          Speichern
+        </ion-button>
       </ion-item>
     </ion-card>
 
@@ -48,7 +54,7 @@
         </p>
       </ion-card-content>
       <ion-item>
-        <ion-button fill="outline" slot="end" (click)="presentAddUserLocation()">
+        <ion-button slot="end" (click)="presentAddUserLocation()">
           <ion-icon name="pin" slot="start"></ion-icon>
           Meinen Standort hinzufügen
         </ion-button>
@@ -65,11 +71,11 @@
         </agm-map>
       </ion-card-content>
       <ion-item>
-          <ion-button fill="outline" slot="end" (click)="presentAddUserLocation()">
-            <ion-icon name="pin" slot="start"></ion-icon>
-            Meinen Standort ändern
-          </ion-button>
-        </ion-item>
+        <ion-button slot="end" (click)="presentAddUserLocation()">
+          <ion-icon name="pin" slot="start"></ion-icon>
+          Meinen Standort ändern
+        </ion-button>
+      </ion-item>
     </ion-card>
 
   </div>

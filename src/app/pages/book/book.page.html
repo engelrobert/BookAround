@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar no-border-top color="primary">
+  <ion-toolbar no-border-top>
     <ion-title *ngIf="book">{{book?.title}}</ion-title>    
   </ion-toolbar>
 </ion-header>
@@ -7,7 +7,7 @@
 <ion-content padding>
 
   <ion-fab vertical="top" horizontal="end" edge slot="fixed" *ngIf="book && !canEdit">
-    <ion-fab-button color="light" (click)="openChat()">
+    <ion-fab-button color="primary" (click)="openChat()">
       <ion-icon name="mail-open"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -108,11 +108,11 @@
           </ion-select>
         </ion-item>
 
-        <ion-button *ngIf="canEdit" expand="block" shape="round" fill="outline" color="primary" (click)="updateBook()">
+        <ion-button *ngIf="canEdit" expand="block" shape="round"  color="primary" (click)="updateBook()">
           <ion-icon name="add" slot="start"></ion-icon>
           Änderungen speichern
         </ion-button>
-        <ion-button *ngIf="canEdit" expand="block" shape="round" fill="outline" color="danger" (click)="deleteBook()">
+        <ion-button *ngIf="canEdit" expand="block" shape="round"  color="danger" (click)="deleteBook()">
           <ion-icon name="trash" slot="start"></ion-icon>
           Buch löschen
         </ion-button>

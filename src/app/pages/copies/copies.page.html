@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar no-border-top color="primary">
+  <ion-toolbar no-border-top>
     <ion-title>Meine Bücher</ion-title>
     <ion-buttons slot="secondary">
       <ion-button [routerLink]="['/app/tabs/profile']">
@@ -21,7 +21,10 @@
       <p text-wrap>Unser Angebot bleibt für dich dauerhaft kostenfrei!</p>
     </ion-card-content>
     <ion-item>
-      <ion-button fill="outline" slot="end" [routerLink]="['/login']">Zur Anmeldung</ion-button>
+      <ion-button slot="end" [routerLink]="['/login']">
+        <ion-icon name="log-in" slot="start"></ion-icon>
+        Zur Anmeldung
+      </ion-button>
     </ion-item>
   </ion-card>
 
@@ -40,7 +43,7 @@
         </p>
       </ion-card-content>
       <ion-item>
-        <ion-button fill="outline" slot="end" (click)="presentAddUserLocation()">
+        <ion-button slot="end" (click)="presentAddUserLocation()">
           <ion-icon name="pin" slot="start"></ion-icon>
           Meinen Standort hinzufügen.
         </ion-button>
@@ -48,7 +51,7 @@
     </ion-card>
   </div>
 
-  <ion-card *ngIf="data.bookArray">
+  <ion-card *ngIf="data.bookArray.length">
     <ion-list>
       <ion-list-header>
         <ion-label>Du hast {{data.bookArray.length}} Bücher hinzugefügt</ion-label>
