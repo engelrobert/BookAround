@@ -32,6 +32,7 @@
     "firebase": "^6.2.3",
     "geofirestore": "^3.3.1",
     "geofirex": "0.0.6",
+    "quagga": "^0.12.1",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.29"
